@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.tutuka</groupId>
+    <artifactId>transaction-comparator</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <description>Comparator Application</description>
+    <inceptionYear>2020</inceptionYear>
+    <developers>
+        <developer>
+            <name>Samuel Gwokuda</name>
+            <timezone>GMT+2</timezone>
+            <email>gwokudasam@gmail.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <commons.io.version>2.6</commons.io.version>
+        <commons.lang.version>3.8.1</commons.lang.version>
+        <mockito.core.version>2.13.0</mockito.core.version>
+        <springfox.version>2.9.2</springfox.version>
+        <springdoc.openapi.version>1.2.32</springdoc.openapi.version>
+    </properties>
+    <dependencies>
+        <!-- Start - Spring Auto-configuration Dependency-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!-- End - Spring Auto-configuration Dependency-->
+
+        <!-- Start - Thymeleaf - For Front-end-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!-- End - Thymeleaf - For Front-end-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Start - Lombok - For reducing boilerplate code-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!-- End - Lombok -->
+        <!-- Start - JPA data layer -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- End - JPA Data layer -->
+        <!-- Start - Database driver for mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- End - Database driver for mysql -->
+        <!-- Start - File and Text Utilities -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+        <!-- End - File and Text Utilities -->
+        <!-- Start - Testing dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.core.version}</version>
+        </dependency>
+        <!-- End - Testing dependencies -->
+
+        <!-- Start - API documentation dependencies -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.openapi.version}</version>
+        </dependency>
+
+        <!-- Start - High-performance caching library for Java used	by new Spring Cloud
+		LoadBalancer -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+        <!-- End - High-performance caching library for Java caffeine -->
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,54 @@
+version: '2.3'
+
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: tutuka/transaction-comparator
+    container_name: transaction-comparator_app
+    restart: unless-stopped
+    volumes:
+      - ./logs/:/data/tutuka:rw
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - tutuka
+    links:
+      - mysql
+    ports:
+    - 5001:5001
+    env_file:
+      - .env
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=tutuka125
+      - MYSQL_DATABASE=tutuka
+      - MYSQL_USER=developer
+      - MYSQL_PASSWORD=tutuka125
+
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - 3306:3306
+    expose:
+      # Opens port 3306 on the container
+      - 3306
+    networks:
+      - tutuka
+    healthcheck:
+      test: ["CMD-SHELL", 'mysql --database=$$MYSQL_DATABASE --password=$$MYSQL_ROOT_PASSWORD --execute="SELECT count(table_name) > 0 FROM information_schema.tables;" --skip-column-names -B']
+      interval: 30s
+      timeout: 10s
+      retries: 4
+
+# Names our volume
+volumes:
+  tutuka-db:
+
+networks:
+  tutuka:
