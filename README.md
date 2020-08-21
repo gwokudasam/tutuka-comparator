@@ -6,9 +6,8 @@
 The following are the initially required software pieces:
 
 1. *JDK 8*  See https://openjdk.java.net/install/
-2. *Maven*  Seehttps://maven.apache.org/download.cgi
+2. *Maven*  See https://maven.apache.org/download.cgi
 3. **Docker Desktop**: The fastest way to containerize applications on your desktop, and you can download it from here [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
-
 
 #Deployment Manual
 
@@ -16,7 +15,7 @@ To run the application run the following commands
 
 `mvn clean package -DskipTests` 
 
-`docker-compose up --build -d`
+`docker-compose up -d --force-recreate --build`
 
 Now go to the web browser and go to `http://localhost:5001/` and select the CSV Files to upload
 
